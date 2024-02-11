@@ -1,6 +1,10 @@
 #coding: UTF-8
 
+import keyboard as kb
 from KUSANAGI.qumcum_controller import QumcumController
+import qumcum_ble as qumcum
+from KUSANAGI.defines import EMotorNo
+from KUSANAGI.keyboard_listener import KeyboardListener
 
 """
 注意点
@@ -17,11 +21,16 @@ motor_power_onでの初期姿勢調整
 
 Receive dataの読み方
   @,＜内部管理用番号＞,＜バッテリ残量の目安＞,＜超音波距離センサの計測値＞,＜マイクの計測値＞
+
+疑問点
+・異なる軸のモーターへ非同期に命令を飛ばした場合、同時に動くのか？
 """
+
 
 def main():
     qm = QumcumController()
-    qm.Standing()
+    interface = KeyboardListener(qm)
+    interface.Run()
 
 
 if __name__ == "__main__":

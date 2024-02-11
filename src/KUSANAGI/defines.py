@@ -12,11 +12,21 @@ class EMotorNo(Enum):
     L_ARM = 7
 
 STANDING_POS = { 
-    EMotorNo.R_ARM:     0,
-    EMotorNo.R_LEG:     90,
-    EMotorNo.R_ANKL:    90,
-    EMotorNo.HEAD:      90,
-    EMotorNo.L_ANKL:    90,
-    EMotorNo.L_LEG:     90,
-    EMotorNo.L_ARM:     180,
+    EMotorNo.R_ARM:     0.0,
+    EMotorNo.R_LEG:     90.0,
+    EMotorNo.R_ANKL:    90.0,
+    EMotorNo.HEAD:      90.0,
+    EMotorNo.L_ANKL:    90.0,
+    EMotorNo.L_LEG:     90.0,
+    EMotorNo.L_ARM:     180.0,
+    }
+
+MOTOR_ROTATE_RANGE = { 
+        EMotorNo.R_ARM:     (0.0, 180.0),
+        EMotorNo.R_LEG:     (60.0, 120.0),
+        EMotorNo.R_ANKL:    (60.0, 120.0),
+        EMotorNo.HEAD:      (0.0, 180.0),
+        EMotorNo.L_ANKL:    (60.0, 120.0),
+        EMotorNo.L_LEG:     (60.0, 120.0),
+        EMotorNo.L_ARM:     (0.0, 180.0),
     }
