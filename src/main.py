@@ -2,6 +2,7 @@
 
 import keyboard as kb
 from KUSANAGI.qumcum_controller import QumcumController
+from KUSANAGI.motor_sequence import MotorSequence
 import qumcum_ble as qumcum
 from KUSANAGI.defines import EMotorNo
 from KUSANAGI.keyboard_listener import KeyboardListener
@@ -28,9 +29,23 @@ Receive dataの読み方
 
 
 def main():
-    qm = QumcumController()
+    motor = MotorSequence()
+    motor.SetCaribOffset({ 
+        EMotorNo.R_ARM:     280,
+        EMotorNo.R_LEG:     20,
+        EMotorNo.R_ANKL:    0,
+        EMotorNo.HEAD:      220,
+        EMotorNo.L_ANKL:    0,
+        EMotorNo.L_LEG:     320,
+        EMotorNo.L_ARM:     290,
+    })
+
+    qm = QumcumController(motor)
+    qm.Start()
+    qm.Standing()
     interface = KeyboardListener(qm)
     interface.Run()
+    qm.End()
 
 
 if __name__ == "__main__":
